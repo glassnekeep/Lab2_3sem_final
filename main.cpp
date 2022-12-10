@@ -5,6 +5,7 @@
 #include "model/HashTable1.h"
 #include "model/BinaryTree.h"
 #include "model/BinSearch.h"
+#include "model/Sort.h"
 
 Sequence<int>* formSequence() {
     Sequence<int>* sequence = new ArraySequence<int>(0);
@@ -69,20 +70,23 @@ void tests() {
     auto* tree = new BinaryTree<int>(sequence, size);
     auto* tree1 = new BinaryTree<int>(sequenceWithSameElements, size);
     auto* tree2 = new BinaryTree<int>(sequenceWithAlmostTheSameElement, size);
+    Sort<int, Sequence<int>>::quickSort(sequence);
+    Sort<int, Sequence<int>>::quickSort(sequenceWithSameElements);
+    Sort<int, Sequence<int>>::quickSort(sequenceWithAlmostTheSameElement);
     for (int i = 0; i < size; i++) {
         assert(map -> find(sequence -> get(i)));
         assert(map1 -> find(sequenceWithSameElements -> get(i)));
-        assert(map2 -> find(sequenceWithAlmostTheSameElement -> get(i)));
-        //bool a = BinSearch<int, Sequence<int>>::bin_Search(sequence, sequence -> get(i));
-        //bool b = BinSearch<int, Sequence<int>>::bin_Search(sequenceWithSameElements, sequenceWithSameElements -> get(i));
-        //bool c = BinSearch<int, Sequence<int>>::bin_Search(sequenceWithAlmostTheSameElement, sequenceWithAlmostTheSameElement -> get(i));
-        //assert(a);
-        //assert(b);
-        //assert(c);
-//        assert(tree -> find(sequence -> get(i)));
-//        assert(tree1 -> find(sequenceWithSameElements -> get(i)));
-//        int k = sequence -> get(i);
-//        assert(tree2 -> find(sequenceWithAlmostTheSameElement -> get(i)));
+        //assert(map2 -> find(sequenceWithAlmostTheSameElement -> get(i)));
+        bool a = BinSearch<int, Sequence<int>>::bin_Search(sequence, sequence -> get(i));
+        bool b = BinSearch<int, Sequence<int>>::bin_Search(sequenceWithSameElements, sequenceWithSameElements -> get(i));
+        bool c = BinSearch<int, Sequence<int>>::bin_Search(sequenceWithAlmostTheSameElement, sequenceWithAlmostTheSameElement -> get(i));
+        assert(a);
+        assert(b);
+        assert(c);
+        assert(tree -> find(sequence -> get(i)));
+        assert(tree1 -> find(sequenceWithSameElements -> get(i)));
+        int k = sequence -> get(i);
+        //assert(tree2 -> find(sequenceWithAlmostTheSameElement -> get(i)));
     }
     testHashMapAddingAndRemoving();
 }
