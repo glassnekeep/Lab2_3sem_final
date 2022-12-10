@@ -31,7 +31,7 @@ pair<string, bool> Presenter::find(string findType, string value) {
     if (findType == "Bin Search") {
         Sort<int, ArraySequence<int>>::quickSort(arr);
         start = clock();
-        resBool = BinSearh<int, ArraySequence<int>>::bin_Search(arr, stoi(value));
+        resBool = BinSearch<int, ArraySequence<int>>::bin_Search(arr, stoi(value));
         end = clock();
         time = to_string((int)(end - start) / (CLOCKS_PER_SEC / 1000)) + " ms";
         return make_pair(time, resBool);
@@ -122,7 +122,8 @@ string Presenter::processMat() {
 }
 
 string Presenter::getTestRes() {
-    return startTests();
+    run();
+    return "";
 }
 
 tuple<vector<double>, vector<double>, vector<double>> Presenter::getPointsForChart() {

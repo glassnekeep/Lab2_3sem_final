@@ -103,6 +103,14 @@ public:
             insert(arr[i]);
     }
 
+    BinaryTree(Sequence<T>* sequence, int count) {
+        root = new TreeElement(sequence -> get(0));
+        size = 1;
+        for (int i = 1; i < count; i++) {
+            insert(sequence -> get(i));
+        }
+    }
+
     ~BinaryTree() {
         delete_tree(root);
     }

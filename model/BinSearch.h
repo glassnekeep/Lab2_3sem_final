@@ -3,13 +3,13 @@
 #include "array/ArraySequence.h"
 
 template <class T, class U>
-class BinSearh {
+class BinSearch {
 public:
     static bool bin_Search(U* arr, T key);
 };
 
 template<class T, class U>
-bool BinSearh<T, U>::bin_Search(U* arr, T key) {
+bool BinSearch<T, U>::bin_Search(U* arr, T key) {
     int l = 0;
     int r = arr->getLength();
     int mid;
