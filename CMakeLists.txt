@@ -10,22 +10,21 @@ add_executable(
         ../model/array/Sequence.h
         ../model/tests/Tests.cpp
         ../model/tests/Tests.h
-        #../presenter/Presenter.cpp
-        #../presenter/Presenter.h
-        #../view/chart/Chartcontrol.cpp
-        #../view/chart/Chartcontrol.h
-        #../view/App.cpp
-        #../view/App.h
-        #../view/MainFrame.cpp
-        #../view/MainFrame.h
+        ../presenter/Presenter.cpp
+        ../presenter/Presenter.h
+        ../view/chart/Chartcontrol.cpp
+        ../view/chart/Chartcontrol.h
+        ../view/App.cpp
+        ../view/App.h
+        ../view/MainFrame.cpp
+        ../view/MainFrame.h
         main.cpp
         #model/HashTable.h
         model/IMap.h
-        #model/HashTable1.h
         #presenter/Presenter1.h
         #presenter/Presenter1.cpp
         model/HashTable1.h
-        model/BinaryTree1.h)
+        model/BinaryTree1.h model/Person.h)
 
 find_package(wxWidgets REQUIRED core base)
 

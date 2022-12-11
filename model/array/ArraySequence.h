@@ -13,7 +13,7 @@ private:
 	DynamicArray<T>* items;
 
 public:
-	ArraySequence(int size) {
+	explicit ArraySequence(int size) {
 		items = new DynamicArray<T>(size);
 	}
 

@@ -85,7 +85,7 @@ void tests() {
     for (int i = 0; i < size; i++) {
         assert(map -> find(sequence -> get(i)));
         assert(map1 -> find(sequenceWithSameElements -> get(i)));
-        //assert(map2 -> find(sequenceWithAlmostTheSameElement -> get(i)));
+        assert(map2 -> find(sequenceWithAlmostTheSameElement -> get(i)));
         bool a = BinSearch<int, Sequence<int>>::bin_Search(sequence, sequence -> get(i));
         bool b = BinSearch<int, Sequence<int>>::bin_Search(sequenceWithSameElements, sequenceWithSameElements -> get(i));
         bool c = BinSearch<int, Sequence<int>>::bin_Search(sequenceWithAlmostTheSameElement, sequenceWithAlmostTheSameElement -> get(i));

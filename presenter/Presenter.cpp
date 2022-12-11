@@ -2,6 +2,7 @@
 #include <string>
 #include <ctime>
 #include <tuple>
+#include <fstream>
 
 #include "Presenter.h"
 
@@ -10,8 +11,36 @@ void Presenter::createArr(int size) {
     int* tmp_arr = new int[size];
     for (int i = 0; i < size; i++)
         tmp_arr[i] = rand() % 100 + 1;
-
     arr = new ArraySequence<int>(tmp_arr, size);
+}
+
+void Presenter::readArrayFromFile(int size) {
+    Person list[size];
+    ifstream file;
+    file.open("../Entry.txt");
+    string str;
+    if (file.is_open()) {
+        for (int i = 0; i < size; ++i) {
+            getline(file, str);
+            int id;
+            string firstname;
+            string lastname;
+            char* ptr;
+            ptr = strtok(const_cast<char*>(str.c_str()), " ");
+            id = atoi(ptr);
+            ptr = strtok(const_cast<char*>(str.c_str()), " ");
+            firstname = ptr;
+            ptr = strtok(const_cast<char*>(str.c_str()), " ");
+            lastname = ptr;
+            Person person = Person {
+                id,
+                firstname,
+                lastname
+            };
+            list[i] = person;
+        }
+    }
+    arrayFromFile = new ArraySequence<struct Person>(list, size);
 }
 
 string Presenter::getArr() {
@@ -122,7 +151,7 @@ string Presenter::processMat() {
 }
 
 string Presenter::getTestRes() {
-    run();
+    //run();
     return "";
 }
 
