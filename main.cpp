@@ -3,7 +3,7 @@
 #include "model/array/Sequence.h"
 #include "model/array/ArraySequence.h"
 #include "model/HashTable1.h"
-#include "model/BinaryTree.h"
+#include "model/BinaryTree1.h"
 #include "model/BinSearch.h"
 #include "model/Sort.h"
 
@@ -67,9 +67,18 @@ void tests() {
     IMap<int, int>* map = new HashMap<int, int>(sequence, size);
     IMap<int, int>* map1 = new HashMap<int, int>(sequenceWithSameElements, size);
     IMap<int, int>* map2 = new HashMap<int, int>(sequenceWithAlmostTheSameElement, size);
-    auto* tree = new BinaryTree<int>(sequence, size);
-    auto* tree1 = new BinaryTree<int>(sequenceWithSameElements, size);
-    auto* tree2 = new BinaryTree<int>(sequenceWithAlmostTheSameElement, size);
+    auto* tree = new Tree<int>();
+    auto* tree1 = new Tree<int>();
+    auto* tree2 = new Tree<int>();
+    for (int i = 0; i < sequence -> getLength(); ++i) {
+        tree -> Append(sequence -> get(i));
+    }
+    for (int i = 0; i < sequenceWithSameElements -> getLength(); ++i) {
+        tree1 -> Append(sequenceWithSameElements -> get(i));
+    }
+    for (int i = 0; i < sequenceWithAlmostTheSameElement -> getLength(); ++i) {
+        tree2 ->Append(sequenceWithAlmostTheSameElement -> get(i));
+    }
     Sort<int, Sequence<int>>::quickSort(sequence);
     Sort<int, Sequence<int>>::quickSort(sequenceWithSameElements);
     Sort<int, Sequence<int>>::quickSort(sequenceWithAlmostTheSameElement);
@@ -83,10 +92,9 @@ void tests() {
         assert(a);
         assert(b);
         assert(c);
-        assert(tree -> find(sequence -> get(i)));
-        assert(tree1 -> find(sequenceWithSameElements -> get(i)));
-        int k = sequence -> get(i);
-        //assert(tree2 -> find(sequenceWithAlmostTheSameElement -> get(i)));
+        assert(tree -> Search(sequence -> get(i)));
+        assert(tree1 -> Search(sequenceWithSameElements -> get(i)));
+        assert(tree2 -> Search(sequenceWithAlmostTheSameElement -> get(i)));
     }
     testHashMapAddingAndRemoving();
 }
