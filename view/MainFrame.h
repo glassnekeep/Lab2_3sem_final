@@ -1,12 +1,9 @@
 #pragma once
-#include "chart/Chartcontrol.h"
-#include "../presenter/Presenter.h"
-#include "../model/tests/Tests.h"
-
 #include <wx/wx.h>
 #include <wx/statline.h>
-#include <string>
 #include <iostream>
+#include "chart/Chartcontrol.h"
+#include "../presenter/Presenter.h"
 
 
 class MainFrame : public wxFrame {

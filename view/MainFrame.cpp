@@ -1,9 +1,4 @@
 #include "MainFrame.h"
-#include "../presenter/Presenter.h"
-
-#include <wx/wx.h>
-
-
 
 MainFrame::MainFrame(const wxString& title) : wxFrame(nullptr, wxID_ANY, title) {
 	panel = new wxPanel(this);
@@ -160,7 +155,7 @@ void MainFrame::OnProcessMatrixBtnClicked(wxCommandEvent& evt) {
 }
 
 void MainFrame::OnTestsBtnClicked(wxCommandEvent& evt) {
-	txtPrint->WriteText(presenter.getTestRes());
+	//txtPrint->WriteText(presenter.getTestRes());
 }
 
 void MainFrame::OnGraphBtnClicked(wxCommandEvent& evt) {

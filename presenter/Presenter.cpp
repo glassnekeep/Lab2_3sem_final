@@ -1,5 +1,4 @@
 #include <random>
-#include <string>
 #include <ctime>
 #include <tuple>
 #include <fstream>
@@ -15,7 +14,7 @@ void Presenter::createArr(int size) {
 }
 
 void Presenter::readArrayFromFile(int size) {
-    Person list[size];
+    arrayFromFile = new Person[size];
     ifstream file;
     file.open("../Entry.txt");
     string str;
@@ -32,15 +31,14 @@ void Presenter::readArrayFromFile(int size) {
             firstname = ptr;
             ptr = strtok(const_cast<char*>(str.c_str()), " ");
             lastname = ptr;
-            Person person = Person {
-                id,
-                firstname,
-                lastname
+            Person person = {
+                    id,
+                    firstname,
+                    lastname
             };
-            list[i] = person;
+            arrayFromFile[i] = person;
         }
     }
-    arrayFromFile = list;
 }
 
 string Presenter::getArr() {
@@ -77,9 +75,10 @@ pair<string, bool> Presenter::find(string findType, string value) {
     }
     if (findType == "Bin Tree") {
         pair<int*, int> arrPair = arr->arrToIntArr();
-        BinaryTree<int> tree(arrPair.first, arrPair.second);
+        int* list = arrPair.first;
+        Tree<int> tree(arr, arrPair.second);
         start = clock();
-        resBool = tree.find(stoi(value));
+        resBool = tree.Search(stoi(value));
         end = clock();
         time = to_string((int)(end - start) / (CLOCKS_PER_SEC / 1000)) + " ms";
         return make_pair(time, resBool);
@@ -122,7 +121,7 @@ void Presenter::createMat(int size) {
 
     for (int i = 0; i < matrix_size; i++)
         for (int j = 0; j < matrix_size; j++)
-            if (rand() % 10+1 < 8) // �������� 80% �������� ����� ����� ����
+            if (rand() % 10+1 < 8)
                 matrix[i][j] = 0;
             else
                 matrix[i][j] = rand() % 100 + 1;
@@ -148,11 +147,6 @@ string Presenter::processMat() {
 
     string res = hashTable.getTable();
     return res;
-}
-
-string Presenter::getTestRes() {
-    //run();
-    return "";
 }
 
 tuple<vector<double>, vector<double>, vector<double>> Presenter::getPointsForChart() {
@@ -182,13 +176,13 @@ tuple<vector<double>, vector<double>, vector<double>> Presenter::getPointsForCha
         time = (double)(end - start) / (CLOCKS_PER_SEC / 1000);
         hashTableVec.push_back(time);
 
-        //3
-        BinaryTree<int> tree(arr, i);
-        start = clock();
-        tree.find(valueToFind);
-        end = clock();
-        time = (double)(end - start) / (CLOCKS_PER_SEC / 1000);
-        binTreeVec.push_back(time);
+//        //3
+//        Tree<int> tree(arr, i);
+//        start = clock();
+//        tree.find(valueToFind);
+//        end = clock();
+//        time = (double)(end - start) / (CLOCKS_PER_SEC / 1000);
+//        binTreeVec.push_back(time);
     }
     return make_tuple(binSearchVec, hashTableVec, binTreeVec);
 }

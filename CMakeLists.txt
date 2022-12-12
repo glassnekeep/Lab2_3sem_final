@@ -8,8 +8,8 @@ add_executable(
         ../model/array/DynamicArray.h
         ../model/array/ArraySequence.h
         ../model/array/Sequence.h
-        ../model/tests/Tests.cpp
-        ../model/tests/Tests.h
+        #../model/tests/Tests.cpp
+        #../model/tests/Tests.h
         ../presenter/Presenter.cpp
         ../presenter/Presenter.h
         ../view/chart/Chartcontrol.cpp
@@ -18,13 +18,14 @@ add_executable(
         ../view/App.h
         ../view/MainFrame.cpp
         ../view/MainFrame.h
-        main.cpp
+        #main.cpp
         #model/HashTable.h
         model/IMap.h
         #presenter/Presenter1.h
         #presenter/Presenter1.cpp
         model/HashTable1.h
-        model/BinaryTree1.h model/Person.h)
+        model/BinaryTree1.h
+        model/Person.h)
 
 find_package(wxWidgets REQUIRED core base)
 

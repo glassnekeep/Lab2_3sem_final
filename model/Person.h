@@ -6,7 +6,7 @@
 #define LAB2_3SEM_FINAL_PERSON_H
 
 #include <iostream>
-#include <cstring>
+#include <string>
 
 using namespace std;
 

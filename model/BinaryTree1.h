@@ -169,6 +169,12 @@ public:
         }
     }
 
+    Tree(ArraySequence<T>* sequence, int size) {
+        for (int i = 0; i < size; ++i) {
+            Append(sequence -> get(i));
+        }
+    }
+
     explicit Tree(const Node &root){
         this->root = new Node(root);
     }
