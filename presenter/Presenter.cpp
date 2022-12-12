@@ -113,9 +113,14 @@ pair<string, bool> Presenter::find(string findType, string value, string type) {
     if (findType == "Bin Tree") {
         pair<int*, int> arrPair = arr->arrToIntArr();
         int* list = arrPair.first;
-        Tree<int> tree(arr, arrPair.second);
+        //Tree<int> tree(arr, arrPair.second);
+        auto* tree = new Tree<int>();
+        for (int i = 0; i < arr -> getLength(); ++i) {
+            int val = arr -> get(i);
+            tree -> Append(val);
+        }
         start = clock();
-        resBool = tree.Search(stoi(value));
+        resBool = tree -> Search(stoi(value));
         end = clock();
         time = to_string((int)(end - start) / (CLOCKS_PER_SEC / 1000)) + " ms";
         return make_pair(time, resBool);
