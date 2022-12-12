@@ -23,6 +23,6 @@ public:
 	static string findMostPopularExp(string s);
 	void createMat(int size);
 	string getMat();
-	void processMat();
+	string processMat();
 	tuple<vector<double>, vector<double>, vector<double>> getPointsForChart();
 };

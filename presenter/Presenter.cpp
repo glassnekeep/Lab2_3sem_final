@@ -174,15 +174,14 @@ string Presenter::getMat() {
     return res;
 }
 
-void Presenter::processMat() {
+string Presenter::processMat() {
     HashMap<int, string> hashTable;
     for (int i = 0; i < matrix_size; i++)
         for (int j = 0; j < matrix_size; j++)
             if(matrix[i][j] != 0)
                 hashTable.put(matrix[i][j], "Row: " + to_string(i) + " ,Col: " + to_string(j));
-    //string res = hashTable.getTable();
-    //hashTable.getTable();
-    //return res;
+    string res = hashTable.print();
+    return res;
 }
 
 tuple<vector<double>, vector<double>, vector<double>> Presenter::getPointsForChart() {

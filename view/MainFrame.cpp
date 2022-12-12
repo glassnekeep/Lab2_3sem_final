@@ -152,10 +152,8 @@ void MainFrame::OnPrintMatrixBtnClicked(wxCommandEvent& evt) {
 }
 
 void MainFrame::OnProcessMatrixBtnClicked(wxCommandEvent& evt) {
-	//string res = presenter.processMat();
-    presenter.processMat();
-
-	//txtPrint->WriteText("Result: \n" + res + "\n\n");
+	string res = presenter.processMat();
+	txtPrint->WriteText("Result: \n" + res + "\n\n");
 }
 
 void MainFrame::OnTestsBtnClicked(wxCommandEvent& evt) {

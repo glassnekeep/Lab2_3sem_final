@@ -184,6 +184,16 @@ public:
         return false;
     }
 
+    string print() {
+        string result;
+        for (int i = 0; i < capacity; i++) {
+            if (table[i]) {
+                result += " key: " + to_string(table[i] -> getKey()) + ", value: " + table[i] -> getValue() + "\n";
+            }
+        }
+        return result;
+    }
+
 //    void getTable() {
 //        string Myres;
 //        for (int i = 0; i < size; i++) {
@@ -199,6 +209,7 @@ public:
 //        }
 ////        return Myres;
 //    }
+
 
 private:
     HashNode<K, V> **table;
