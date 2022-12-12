@@ -3,29 +3,9 @@ project(Lab2_3sem_final)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(
-        Lab2_3sem_final
-        ../model/array/DynamicArray.h
-        ../model/array/ArraySequence.h
-        ../model/array/Sequence.h
-        #../model/tests/Tests.cpp
-        #../model/tests/Tests.h
-        ../presenter/Presenter.cpp
-        ../presenter/Presenter.h
-        ../view/chart/Chartcontrol.cpp
-        ../view/chart/Chartcontrol.h
-        ../view/App.cpp
-        ../view/App.h
-        ../view/MainFrame.cpp
-        ../view/MainFrame.h
-        #main.cpp
-        #model/HashTable.h
-        model/IMap.h
-        #presenter/Presenter1.h
-        #presenter/Presenter1.cpp
-        model/HashTable1.h
-        model/BinaryTree1.h
-        model/Person.h model/Exception.h)
+add_executable(Lab2_3sem_final ../model/array/DynamicArray.h ../model/array/ArraySequence.h ../model/array/Sequence.h ../presenter/Presenter.cpp ../presenter/Presenter.h ../view/chart/Chartcontrol.cpp ../view/chart/Chartcontrol.h ../view/App.cpp ../view/App.h ../view/MainFrame.cpp ../view/MainFrame.h model/IMap.h model/HashTable1.h model/BinaryTree1.h model/Person.h model/Exception.h)
+
+#add_executable(Lab2_3sem_final ../model/array/DynamicArray.h ../model/array/ArraySequence.h ../model/array/Sequence.h main.cpp model/IMap.h model/HashTable1.h model/BinaryTree1.h model/Person.h model/Exception.h)
 
 find_package(wxWidgets REQUIRED core base)
 
