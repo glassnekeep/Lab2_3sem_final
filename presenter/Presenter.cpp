@@ -13,11 +13,17 @@ void Presenter::createArr(int size) {
     arr = new ArraySequence<int>(tmp_arr, size);
 }
 
-void Presenter::readArrayFromFile(int size) {
-    arrayFromFile = new Person[size];
+void Presenter::readArrayFromFile() {
     ifstream file;
+    int size;
     file.open("../Entry.txt");
+    if (file.is_open()) {
+        string s;
+        getline(file, s);
+        size = atoi(const_cast<char*>(s.c_str()));
+    }
     string str;
+    arrayFromFile = new Person[size];
     if (file.is_open()) {
         for (int i = 0; i < size; ++i) {
             getline(file, str);
@@ -49,7 +55,7 @@ string Presenter::getArr() {
     return res;
 }
 
-pair<string, bool> Presenter::find(string findType, string value) {
+pair<string, bool> Presenter::find(string findType, string value, string type) {
     clock_t start, end;
     string time;
     bool resBool;
@@ -64,14 +70,38 @@ pair<string, bool> Presenter::find(string findType, string value) {
         return make_pair(time, resBool);
     }
     if (findType == "Hash Table") {
-        pair<int*, int> arrPair = arr->arrToIntArr();
-        HashMap<int, int> hashTable(arr, arr -> getLength());
-        //HashMap<int, int> hashTable(arrPair.first, arrPair.second);
-        start = clock();
-        resBool = hashTable.find(stoi(value));
-        end = clock();
-        time = to_string((int)(end - start) / (CLOCKS_PER_SEC / 1000)) + " ms";
-        return make_pair(time, resBool);
+        if (type == "Person") {
+            readArrayFromFile();
+            auto* hashMap = new HashMap<int, Person>();
+            for (int i = 0; i < personArrayLength; ++i) {
+                hashMap -> put(arrayFromFile[i].id, arrayFromFile[i]);
+            }
+            char *ptr = strtok(const_cast<char*>(value.c_str()), " ");
+            int id = atoi(ptr);
+            ptr = strtok(const_cast<char*>(value.c_str()), " ");
+            string firstname = ptr;
+            ptr = strtok(const_cast<char*>(value.c_str()), " ");
+            string lastname = ptr;
+            Person person = {
+                    id,
+                    firstname,
+                    lastname
+            };
+            start = clock();
+            resBool = hashMap -> find(id);
+            end = clock();
+            time = to_string((int)(end - start) / (CLOCKS_PER_SEC / 1000)) + " ms";
+            return make_pair(time, resBool);
+        } else {
+            pair<int*, int> arrPair = arr->arrToIntArr();
+            HashMap<int, int> hashTable(arr, arr -> getLength());
+            //HashMap<int, int> hashTable(arrPair.first, arrPair.second);
+            start = clock();
+            resBool = hashTable.find(stoi(value));
+            end = clock();
+            time = to_string((int)(end - start) / (CLOCKS_PER_SEC / 1000)) + " ms";
+            return make_pair(time, resBool);
+        }
     }
     if (findType == "Bin Tree") {
         pair<int*, int> arrPair = arr->arrToIntArr();
@@ -134,19 +164,18 @@ string Presenter::getMat() {
             res += to_string(matrix[i][j]) + " ";
         res += "\n";
     }
-
     return res;
 }
 
-string Presenter::processMat() {
+void Presenter::processMat() {
     HashMap<int, string> hashTable;
     for (int i = 0; i < matrix_size; i++)
         for (int j = 0; j < matrix_size; j++)
             if(matrix[i][j] != 0)
                 hashTable.put(matrix[i][j], "Row: " + to_string(i) + " ,Col: " + to_string(j));
-
-    string res = hashTable.getTable();
-    return res;
+    //string res = hashTable.getTable();
+    hashTable.getTable();
+    //return res;
 }
 
 tuple<vector<double>, vector<double>, vector<double>> Presenter::getPointsForChart() {

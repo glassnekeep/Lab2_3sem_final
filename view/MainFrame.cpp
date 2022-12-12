@@ -20,7 +20,10 @@ MainFrame::MainFrame(const wxString& title) : wxFrame(nullptr, wxID_ANY, title) 
 	findFuns.Add("Bin Search");
 	findFuns.Add("Hash Table");
 	findFuns.Add("Bin Tree");
-	choiceFindFun = new wxChoice(panel, wxID_ANY, wxPoint(30, 180), wxDefaultSize, findFuns);
+    types.Add("int");
+    types.Add("Person");
+	choiceFindFun = new wxChoice(panel, wxID_ANY, wxPoint(30, 170), wxDefaultSize, findFuns);
+    valueTypeChoice = new wxChoice(panel, wxID_ANY, wxPoint(30, 195), wxDefaultSize, types);
 
 	btnFind = new wxButton(panel, wxID_ANY, "Find", wxPoint(140, 180), wxSize(60, -1));
 	btnFind->SetBackgroundColour(wxColor(70, 205, 70));
@@ -111,10 +114,10 @@ void MainFrame::OnPrintArrayBtnClicked(wxCommandEvent& evt) {
 }
 
 void MainFrame::OnFindBtnClicked(wxCommandEvent& evt) {
-	string findType = findFuns[choiceFindFun->GetSelection()].ToStdString();
-	string valueToFind = txtCtrlValToFind->GetValue().ToStdString();
-
-	pair<string, bool> resOfFind = presenter.find(findType, valueToFind);
+	string findType = findFuns[choiceFindFun -> GetSelection()].ToStdString();
+    string type = types[valueTypeChoice -> GetSelection()].ToStdString();
+	string valueToFind = txtCtrlValToFind -> GetValue().ToStdString();
+	pair<string, bool> resOfFind = presenter.find(findType, valueToFind, type);
 
 	bool res = resOfFind.second;
 
@@ -149,9 +152,10 @@ void MainFrame::OnPrintMatrixBtnClicked(wxCommandEvent& evt) {
 }
 
 void MainFrame::OnProcessMatrixBtnClicked(wxCommandEvent& evt) {
-	string res = presenter.processMat();
+	//string res = presenter.processMat();
+    presenter.processMat();
 
-	txtPrint->WriteText("Result: \n" + res + "\n\n");
+	//txtPrint->WriteText("Result: \n" + res + "\n\n");
 }
 
 void MainFrame::OnTestsBtnClicked(wxCommandEvent& evt) {

@@ -21,7 +21,7 @@ public:
     virtual void remove(const K& key) = 0;
     virtual bool find(const K& key) = 0;
     //Поиск по значению
-    virtual string getTable() = 0;
+    virtual void getTable() = 0;
 private:
 };
 #endif //MEPHI_LAB2_3SEM_IMAP_H

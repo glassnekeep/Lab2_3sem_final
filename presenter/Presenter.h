@@ -14,14 +14,15 @@ private:
 	ArraySequence<int>* arr;
     Person* arrayFromFile;
 	int** matrix;
+    int personArrayLength;
 public:
 	void createArr(int size);
-    void readArrayFromFile(int size);
+    void readArrayFromFile();
 	string getArr();
-	pair<string, bool> find(string findType, string value);
+	pair<string, bool> find(string findType, string value, string type);
 	static string findMostPopularExp(string s);
 	void createMat(int size);
 	string getMat();
-	string processMat();
+	void processMat();
 	tuple<vector<double>, vector<double>, vector<double>> getPointsForChart();
 };

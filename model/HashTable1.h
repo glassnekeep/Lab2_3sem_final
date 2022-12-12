@@ -9,6 +9,7 @@
 #include "array/Sequence.h"
 #include <string>
 #include "Exception.h"
+#include "Person.h"
 
 #define LOAD_FACTOR  0.75
 // поменять на 0.75
@@ -125,8 +126,8 @@ public:
                     HashNode<K, V>** oldTable = table;
                     table = new HashNode<K, V>* [capacity]();
                     for (int i = 0; i < capacity; i++) {
-                        int newFunc = hashFunc(oldTable[i] -> getKey());
-                        put(newFunc, oldTable[i] -> getValue());
+                        //int newFunc = hashFunc(oldTable[i] -> getKey());
+                        put(oldTable[i] -> getKey(), oldTable[i] -> getValue());
                     }
                     delete oldTable;
                 }
@@ -183,20 +184,20 @@ public:
         return false;
     }
 
-    string getTable() {
+    void getTable() {
         string Myres;
         for (int i = 0; i < size; i++) {
             if (table[i]) {
-                int flag = 1;
-                string s3 = to_string(table[i] -> getKey());
-                string s4;
-                s4 = table[i] -> getValue();
-                Myres += to_string(flag) + ") Key: \n" + s4 + " Value: " + s3 + "\n";
-                flag++;
-                Myres += "\n";
+//                int flag = 1;
+//                string s3 = to_string(table[i] -> getKey());
+//                string s4 = to_string(table[i] -> getValue());
+//                Myres += to_string(flag) + ") Key: \n" + s4 + " Value: " + s3 + "\n";
+//                flag++;
+//                Myres += "\n";
+                cout << "key = " << (table[i] -> getKey()) << ", value = " << (table[i] -> getValue()) << endl;
             }
         }
-        return Myres;
+//        return Myres;
     }
 
 private:
@@ -207,4 +208,8 @@ private:
     int capacity = 16;
     int size = 0;
 };
+
+std::string to_string(const Person& person) {
+    return "Person: id = " + to_string(person.id) + ", firstname = " + person.firstName + ", lastname = " + person.lastName;
+}
 #endif //LAB2_3SEM_FINAL_HASHTABLE1_H
