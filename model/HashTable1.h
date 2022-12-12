@@ -8,18 +8,13 @@
 #include "IMap.h"
 #include "array/Sequence.h"
 #include <string>
+#include "Exception.h"
 
 #define LOAD_FACTOR  0.75
 // поменять на 0.75
 //брать капасити как простые числа
 
 using namespace std;
-
-class NotFoundException: public exception {
-    virtual const char* message() const noexcept {
-        return "Element not found";
-    }
-} NotFoundException;
 
 template <typename K, typename V>
 class HashNode {
@@ -109,7 +104,7 @@ public:
             }
             entry = entry -> getNext();
         }
-        throw NotFoundException;
+        throw Exception(2);
     }
 
     void put(const K &key, const V &value) override {

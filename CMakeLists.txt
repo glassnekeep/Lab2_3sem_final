@@ -25,7 +25,7 @@ add_executable(
         #presenter/Presenter1.cpp
         model/HashTable1.h
         model/BinaryTree1.h
-        model/Person.h)
+        model/Person.h model/Exception.h)
 
 find_package(wxWidgets REQUIRED core base)
 
