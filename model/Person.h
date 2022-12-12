@@ -35,9 +35,9 @@ struct hash<Person> {
 //    return "Person: id = " + to_string(person.id) + ", firstname = " + person.firstName + ", lastname = " + person.lastName;
 //}
 
-std::ostream& operator << (std::ostream& o, const Person& person) {
-    o << "Person: id = " << person.id << ", firstname = " << person.firstName << ", lastname = " << person.lastName << std::endl;
-    return o;
-}
+//std::ostream& operator << (std::ostream& o, const Person& person) {
+//    o << "Person: id = " << person.id << ", firstname = " << person.firstName << ", lastname = " << person.lastName << std::endl;
+//    return o;
+//}
 
 #endif //LAB2_3SEM_FINAL_PERSON_H

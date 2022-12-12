@@ -14,28 +14,34 @@ void Presenter::createArr(int size) {
 }
 
 void Presenter::readArrayFromFile() {
-    ifstream file;
-    int size;
-    file.open("../Entry.txt");
+    ifstream file("C:\\Users\\-\\CLionProjects\\Lab2_3sem_final\\Entry1.txt");
+    int count;
     if (file.is_open()) {
         string s;
         getline(file, s);
-        size = atoi(const_cast<char*>(s.c_str()));
+        count = atoi(const_cast<char*>(s.c_str()));
     }
+    personArrayLength = count;
     string str;
-    arrayFromFile = new Person[size];
+    arrayFromFile = new Person[count];
     if (file.is_open()) {
-        for (int i = 0; i < size; ++i) {
-            getline(file, str);
+        for (int i = 0; i < count; ++i) {
+            //getline(file, str);
             int id;
             string firstname;
             string lastname;
-            char* ptr;
-            ptr = strtok(const_cast<char*>(str.c_str()), " ");
-            id = atoi(ptr);
-            ptr = strtok(const_cast<char*>(str.c_str()), " ");
+            string ptr;
+//            ptr = strtok(const_cast<char*>(str.c_str()), "\0");
+//            id = atoi(ptr);
+//            ptr = strtok(const_cast<char*>(str.c_str()), " ");
+//            firstname = ptr;
+//            ptr = strtok(const_cast<char*>(str.c_str()), "\n");
+//            lastname = ptr;
+            getline(file, ptr);
+            id = atoi(const_cast<char*>(ptr.c_str()));
+            getline(file, ptr);
             firstname = ptr;
-            ptr = strtok(const_cast<char*>(str.c_str()), " ");
+            getline(file, ptr);
             lastname = ptr;
             Person person = {
                     id,
@@ -59,7 +65,8 @@ pair<string, bool> Presenter::find(string findType, string value, string type) {
     clock_t start, end;
     string time;
     bool resBool;
-    if (findType.empty() || value.empty() || arr->getLength() == 0)
+    //if (findType.empty() || value.empty() || (arr->getLength() == 0 && type != "Person"))
+    if (findType.empty() || value.empty())
         return make_pair("0", false);
     if (findType == "Bin Search") {
         Sort<int, ArraySequence<int>>::quickSort(arr);
@@ -174,7 +181,7 @@ void Presenter::processMat() {
             if(matrix[i][j] != 0)
                 hashTable.put(matrix[i][j], "Row: " + to_string(i) + " ,Col: " + to_string(j));
     //string res = hashTable.getTable();
-    hashTable.getTable();
+    //hashTable.getTable();
     //return res;
 }
 

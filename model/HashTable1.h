@@ -184,21 +184,21 @@ public:
         return false;
     }
 
-    void getTable() {
-        string Myres;
-        for (int i = 0; i < size; i++) {
-            if (table[i]) {
-//                int flag = 1;
-//                string s3 = to_string(table[i] -> getKey());
-//                string s4 = to_string(table[i] -> getValue());
-//                Myres += to_string(flag) + ") Key: \n" + s4 + " Value: " + s3 + "\n";
-//                flag++;
-//                Myres += "\n";
-                cout << "key = " << (table[i] -> getKey()) << ", value = " << (table[i] -> getValue()) << endl;
-            }
-        }
-//        return Myres;
-    }
+//    void getTable() {
+//        string Myres;
+//        for (int i = 0; i < size; i++) {
+//            if (table[i]) {
+////                int flag = 1;
+////                string s3 = to_string(table[i] -> getKey());
+////                string s4 = to_string(table[i] -> getValue());
+////                Myres += to_string(flag) + ") Key: \n" + s4 + " Value: " + s3 + "\n";
+////                flag++;
+////                Myres += "\n";
+//                cout << "key = " << (table[i] -> getKey()) << ", value = " << (table[i] -> getValue()) << endl;
+//            }
+//        }
+////        return Myres;
+//    }
 
 private:
     HashNode<K, V> **table;
@@ -208,8 +208,4 @@ private:
     int capacity = 16;
     int size = 0;
 };
-
-std::string to_string(const Person& person) {
-    return "Person: id = " + to_string(person.id) + ", firstname = " + person.firstName + ", lastname = " + person.lastName;
-}
 #endif //LAB2_3SEM_FINAL_HASHTABLE1_H
