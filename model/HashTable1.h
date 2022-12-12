@@ -15,6 +15,12 @@
 
 using namespace std;
 
+class NotFoundException: public exception {
+    virtual const char* message() const noexcept {
+        return "Element not found";
+    }
+} NotFoundException;
+
 template <typename K, typename V>
 class HashNode {
 public:
@@ -103,7 +109,7 @@ public:
             }
             entry = entry -> getNext();
         }
-        return nullptr;
+        throw NotFoundException;
     }
 
     void put(const K &key, const V &value) override {
