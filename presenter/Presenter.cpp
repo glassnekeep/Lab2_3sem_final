@@ -40,7 +40,7 @@ void Presenter::readArrayFromFile(int size) {
             list[i] = person;
         }
     }
-    arrayFromFile = new ArraySequence<struct Person>(list, size);
+    arrayFromFile = list;
 }
 
 string Presenter::getArr() {

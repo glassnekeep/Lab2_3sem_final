@@ -13,7 +13,7 @@ private:
 	int size;
 	int matrix_size;
 	ArraySequence<int>* arr;
-    ArraySequence<Person>* arrayFromFile;
+    Person* arrayFromFile;
 	int** matrix;
 public:
 	void createArr(int size);
